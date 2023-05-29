@@ -1,0 +1,19 @@
+.activeChatContainer{
+    flex-grow: 1; /* Allow ActiveChat to grow and occupy remaining space */
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     height: 300px;
+     background-color: #5d5b8d;
+     padding: 10px 10px;
+
+        .chatInfo {
+          
+            display: flex;
+            align-items: center;
+        
+            color: lightgray;
+           
+        }
+
+}

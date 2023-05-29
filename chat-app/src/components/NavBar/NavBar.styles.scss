@@ -1,0 +1,32 @@
+.navBar{
+    background-color: azure;
+    padding: 10px 10px;
+    height: 50px;
+    width: 100%;
+
+
+    .userName{
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+      
+
+        img{
+            background-color: #ddddf7;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        button{
+            background-color: #5d5b8d;
+            color: #ddddf7;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    }
+  
+   
+}

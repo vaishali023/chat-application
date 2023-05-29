@@ -1,0 +1,28 @@
+.inputContainer{
+    height: 50px;
+    background-color: white;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    input{
+    height: 30px;
+    padding: 5px;
+    font-size: 14px;
+    }
+    .sendText {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+     
+        img{
+            cursor: pointer;
+            height: 24px;
+        }
+        button{
+            height: 24px;
+        }
+    }
+}
