@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Navigate, Route } from 'react-router-dom';
 import { useAuth, useFirestore, useUser } from 'reactfire';
 import { auth } from './firebase';
+import HomePage from './pages/HomePage';
 
  const AppAuthWrapper = ({ element: Element, ...rest }) => {
   const auth = useAuth();
@@ -21,7 +22,7 @@ import { auth } from './firebase';
     return <Navigate to="/login" replace />;
   }
 
-  return <Element {...rest} />;
+  return <HomePage/>;
 };
 
 export default AppAuthWrapper;

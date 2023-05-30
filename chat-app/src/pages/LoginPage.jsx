@@ -13,18 +13,18 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-        console.log('almost donr login');
+       
       // Sign in the user using Firebase Authentication
       await signInWithEmailAndPassword(auth, email, password);
       // Clear the form fields after successful login
       setEmail('');
       setPassword('');
       setError(null);
-      console.log('Logindone');
-      // Redirect to the desired page
+  
+      // Redirect 
       setTimeout(() => {
         navigate('/');
-        console.log('navigating to another page');
+       
       }, 500);
     } catch (error) {
       // Handle login errors
@@ -36,7 +36,7 @@ const LoginPage = () => {
     <div className='formContainer'>
       <div className='wrapper'>
         <h2 className='title'>Welcome to the Chat!</h2>
-        <h3>Login</h3>
+        <h3>Sign in</h3>
         <form onSubmit={handleSubmit}>
           <input
             type='email'

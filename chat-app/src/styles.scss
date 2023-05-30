@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+body{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
 .formContainer{
    background-color:#666362;
    min-height: 100vh;
@@ -36,6 +43,9 @@
          border-bottom: 1px solid #a7bcff;
          &::placeholder {
           color: rgb(175, 175, 175);
+        }
+        &:focus{
+           outline: 1px solid #9063CD;
         }
        
         }
@@ -78,32 +88,10 @@
   }
 }
 
-// .hero {
-//     background-color: #666362;
-//     height: 100vh;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
 
-//     .container{
-//         border: 1px solid white;
-//         border-radius: 10px;
-//         width: 80%;
-//         height: 80%;
-//         display: flex;
-//         flex-direction: row;
-//         overflow: hidden;
-//     }
-// }
-
-// body {
-//     background-color: #282c34;
-//   }
 
 .hero {
-
-    border: 1px solid white;
-    background-color: skyblue;
+  background-color:#666362;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,8 +102,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
-   
-    
+        min-width: 600px;
+        border-radius: 8px;
     }
 }
