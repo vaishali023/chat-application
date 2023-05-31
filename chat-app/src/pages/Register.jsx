@@ -13,10 +13,13 @@ import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
   const [selectedPicture, setSelectedPicture] = useState(null);
+  const [previewURL, setPreviewURL] = useState(null); // Holds the temporary URL for the preview
   const navigate = useNavigate();
 
   const handlePictureChange = (e) => {
-    setSelectedPicture(e.target.files[0]);
+    const file = e.target.files[0];
+    setSelectedPicture(file);
+    setPreviewURL(URL.createObjectURL(file)); // Create a temporary URL for the selected image file
   };
 
   const handleSubmit = async (e) => {
@@ -53,9 +56,8 @@ const Register = () => {
               });
 
               // Store additional user data in Firestore
-              const userCollection = collection(db, "users"); 
+              const userCollection = collection(db, "users");
               await setDoc(doc(userCollection, user.uid), {
-               
                 uid: user.uid,
                 displayName,
                 email,
@@ -80,9 +82,8 @@ const Register = () => {
         });
 
         // Store additional user data in Firestore
-        const userCollection = collection(db, "users"); 
+        const userCollection = collection(db, "users");
         await setDoc(doc(userCollection, user.uid), {
-         
           uid: user.uid,
           displayName,
           email,
@@ -107,16 +108,22 @@ const Register = () => {
         <h2 className="title">Welcome to the Chat!</h2>
         <h3>Register</h3>
         <form onSubmit={handleSubmit}>
+        {previewURL && (
+              <img src={previewURL} alt="Preview" className="previewImage" />
+            )}
+          
           <input type="text" placeholder="Display Name" name="displayName" />
           <input type="email" placeholder="Email" name="email" />
           <input type="password" placeholder="Password" name="password" />
-
+  
           <input
             className="addProfile"
             type="file"
             id="addPicture"
             onChange={handlePictureChange}
           />
+           
+      
           <label htmlFor="addPicture">
             <img src={Add} alt="Display Picture" />
             <span>Add your Display Picture</span>
@@ -129,6 +136,7 @@ const Register = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Register;
