@@ -1,5 +1,5 @@
 .navBarContainer {
-    background-color: azure;
+    background-color: #E7E8E7;
     padding: 10px;
     height: 50px;
     width: 100%;
@@ -18,6 +18,8 @@
         color:#ddddf7;
         border: none;
         border-radius: 50%;
+        height: 40px;
+        width: 40px;
       }
       .displayPicture {
         background-color: #ddddf7;
@@ -30,6 +32,7 @@
       .userName {
         margin-left: 10px;
         color: dark grey;
+        font-weight: 400;
       }
   
      

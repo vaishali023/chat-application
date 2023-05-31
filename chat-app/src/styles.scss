@@ -4,6 +4,8 @@ body{
   padding:0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+ 
+
 }
 .formContainer{
    background-color:#666362;
@@ -11,10 +13,10 @@ body{
    display: flex;
    align-items: center;
    justify-content: center;
-   
+   background: linear-gradient(to bottom, #232526, #414345); 
    .wrapper{
     width: 350px;
-    background-color: beige;
+    background-color: #E7E8E7;
     padding: 20px 40px;
     display: flex;
     flex-direction: column;
@@ -23,6 +25,7 @@ body{
     border-radius: 10px;
     margin-top: auto;
     margin-bottom: auto;
+    box-shadow: 0 0 20px 5px #5f6061;
     h3{
         font-size: 18px;
         font-weight: light;
@@ -40,12 +43,13 @@ body{
         input{
          padding: 10px;
          border: none;
+         font-size: 18px;
          border-bottom: 1px solid #a7bcff;
          &::placeholder {
           color: rgb(175, 175, 175);
         }
         &:focus{
-           outline: 1px solid #9063CD;
+           outline: 2px solid #9063CD;
         }
        
         }
@@ -66,7 +70,7 @@ body{
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #8da4f1;
+            color: #6a7bb4;
             font-size: 12px;
             cursor: pointer;
     
@@ -91,18 +95,19 @@ body{
 
 
 .hero {
-  background-color:#666362;
+  background: linear-gradient(to bottom, #232526, #414345); 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Adjust the height as needed */
-
+    height: 100vh; 
+    border-radius: 8px;
+    border: none;
 
     .container{
         display: flex;
         flex-direction: column;
         align-items: center;
         min-width: 600px;
-        border-radius: 8px;
+        
     }
 }

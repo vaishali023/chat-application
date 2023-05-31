@@ -1,16 +1,15 @@
-import { createContext,useEffect, useContext, useReducer } from 'react';
-import { useFirestore, useUser } from 'reactfire';
-import { db } from './firebase';
+import { createContext, useEffect, useReducer } from "react";
+import { useFirestore, useUser } from "reactfire";
 
 export const ChatContext = createContext();
 const initialState = {
-  chatId: 'null',
+  chatId: "null",
   user: {},
 };
 
 const chatReducer = (state, action) => {
   switch (action.type) {
-    case 'CHANGE_USER':
+    case "CHANGE_USER":
       const { currentUser } = action.payload;
       const { uid, displayName } = currentUser;
 
@@ -38,7 +37,7 @@ export const ChatContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (currentUser) {
-      dispatch({ type: 'CHANGE_USER', payload: { currentUser } });
+      dispatch({ type: "CHANGE_USER", payload: { currentUser } });
     }
   }, [currentUser]);
 

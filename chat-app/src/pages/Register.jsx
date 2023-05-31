@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-import Add from '../assets/AddDisplayPicture.png';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { doc, setDoc, collection } from 'firebase/firestore'; // Import collection from firebase/firestore
-import { auth, storage, db } from '../firebase'; // Import auth, storage, and db from firebase
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import Add from "../assets/AddDisplayPicture.png";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { doc, setDoc, collection } from "firebase/firestore"; 
+import { auth, storage, db } from "../firebase"; 
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
   const [selectedPicture, setSelectedPicture] = useState(null);
@@ -23,7 +28,7 @@ const Register = () => {
 
     // Perform form validation
     if (!displayName || !email || !password) {
-      console.log('Please fill in all fields');
+      console.log("Please fill in all fields");
       return;
     }
 
@@ -34,7 +39,10 @@ const Register = () => {
 
       // Upload display picture to Firebase Storage
       if (selectedPicture) {
-        const storageRef = ref(storage, `displayPictures/${user.uid}/${selectedPicture.name}`);
+        const storageRef = ref(
+          storage,
+          `displayPictures/${user.uid}/${selectedPicture.name}`
+        );
         await uploadBytesResumable(storageRef, selectedPicture).then(() => {
           getDownloadURL(storageRef).then(async (downloadURL) => {
             try {
@@ -45,8 +53,9 @@ const Register = () => {
               });
 
               // Store additional user data in Firestore
-              const userCollection = collection(db, 'users'); // Reference the "users" collection
-              await setDoc(doc(userCollection, user.uid), { // Use doc(userCollection, user.uid) to create a document within the "users" collection
+              const userCollection = collection(db, "users"); 
+              await setDoc(doc(userCollection, user.uid), {
+               
                 uid: user.uid,
                 displayName,
                 email,
@@ -54,11 +63,11 @@ const Register = () => {
               });
 
               // Clear the form fields after successful registration
-              e.target.elements.displayName.value = '';
-              e.target.elements.email.value = '';
-              e.target.elements.password.value = '';
+              e.target.elements.displayName.value = "";
+              e.target.elements.email.value = "";
+              e.target.elements.password.value = "";
 
-              navigate('/');
+              navigate("/");
             } catch (err) {
               console.log(err);
             }
@@ -71,50 +80,51 @@ const Register = () => {
         });
 
         // Store additional user data in Firestore
-        const userCollection = collection(db, 'users'); // Reference the "users" collection
-        await setDoc(doc(userCollection, user.uid), { // Use doc(userCollection, user.uid) to create a document within the "users" collection
+        const userCollection = collection(db, "users"); 
+        await setDoc(doc(userCollection, user.uid), {
+         
           uid: user.uid,
           displayName,
           email,
         });
 
         // Clear the form fields after successful registration
-        e.target.elements.displayName.value = '';
-        e.target.elements.email.value = '';
-        e.target.elements.password.value = '';
+        e.target.elements.displayName.value = "";
+        e.target.elements.email.value = "";
+        e.target.elements.password.value = "";
 
-        navigate('/');
+        navigate("/");
       }
     } catch (error) {
       // Handle registration errors
-      console.log('Registration error:', error.message);
+      console.log("Registration error:", error.message);
     }
   };
 
   return (
-    <div className='formContainer'>
-      <div className='wrapper'>
-        <h2 className='title'>Welcome to the Chat!</h2>
+    <div className="formContainer">
+      <div className="wrapper">
+        <h2 className="title">Welcome to the Chat!</h2>
         <h3>Register</h3>
         <form onSubmit={handleSubmit}>
-          <input type='text' placeholder='Display Name' name='displayName' />
-          <input type='email' placeholder='Email' name='email' />
-          <input type='password' placeholder='Password' name='password' />
+          <input type="text" placeholder="Display Name" name="displayName" />
+          <input type="email" placeholder="Email" name="email" />
+          <input type="password" placeholder="Password" name="password" />
 
           <input
-            className='addProfile'
-            type='file'
-            id='addPicture'
+            className="addProfile"
+            type="file"
+            id="addPicture"
             onChange={handlePictureChange}
           />
-          <label htmlFor='addPicture'>
-            <img src={Add} alt='Display Picture' />
+          <label htmlFor="addPicture">
+            <img src={Add} alt="Display Picture" />
             <span>Add your Display Picture</span>
           </label>
-          <button type='submit'>Register</button>
+          <button type="submit">Register</button>
         </form>
         <p>
-          Already have an account? <Link to='/login'>Sign in</Link>
+          Already have an account? <Link to="/login">Sign in</Link>
         </p>
       </div>
     </div>
@@ -122,4 +132,3 @@ const Register = () => {
 };
 
 export default Register;
-

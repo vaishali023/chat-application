@@ -4,7 +4,7 @@
     flex-direction: column;
     width: 100%;
     height: 500px;
-    background-color: beige;
+    background-color: #E7E8E7;
     padding: 10px;
   
     .chatInfo {
@@ -12,7 +12,7 @@
       flex-direction: column;
       color: rgb(255, 255, 255);
       overflow: auto;
-      scrollbar-width: thin; /* Add this property to control the scrollbar width in Firefox */
+      scrollbar-width: thin;
   
       /* Hide the scroll bar */
       scrollbar-width: none; /* For Chrome and Safari */
@@ -26,8 +26,8 @@
         flex-direction: column;
         align-self: flex-start;
         position: relative;
-        max-width: 70%; /* Adjust the maximum width as per your preference */
-  
+        max-width: 70%; 
+        
         &.sent {
           align-self: flex-end;
           .messageContent {

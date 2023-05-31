@@ -10,25 +10,22 @@ import { ChatContextProvider } from './ChatContext';
 
 
 function App() {
-
   return (
     <AuthProvider sdk={auth}>
       <FirestoreProvider sdk={db}>
-      <ChatContextProvider>
-        <Routes>
-        <Route
-          path="/"
-          element={<Navigate to="/home" replace />} // Redirect to /home if already authenticated
-        />
-        <Route
+        <ChatContextProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={<Navigate to="/home" replace />} // Redirect to /home if already authenticated
+            />
+            <Route
               path="/home"
-              element={
-                <AppAuthWrapper element={<HomePage />} />
-              }
+              element={<AppAuthWrapper element={<HomePage />} />}
             />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<Register />} />
-        </Routes>
+          </Routes>
         </ChatContextProvider>
       </FirestoreProvider>
     </AuthProvider>
