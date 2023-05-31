@@ -64,8 +64,8 @@
         .messageBubble {
           border-radius: 16px;
           padding: 8px 12px;
-          max-width: 100%; /* Allow the bubble to occupy the maximum width available */
-          word-wrap: break-word; /* Enable wrapping of long messages */
+          max-width: 100%; 
+          word-wrap: break-word; 
         }
   
         .content {

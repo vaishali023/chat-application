@@ -32,10 +32,6 @@ const NavBar = () => {
     }
   }, [state.user]);
 
-  console.log("user:", state);
-  console.log("user.displayName:", state.user && state.user.displayName);
-  console.log("user.photoURL:", displayPicture);
-
   const handleLogout = async () => {
     await auth.signOut();
   };

@@ -15,6 +15,8 @@ const Register = () => {
   const [selectedPicture, setSelectedPicture] = useState(null);
   const [previewURL, setPreviewURL] = useState(null); // Holds the temporary URL for the preview
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
+
 
   const handlePictureChange = (e) => {
     const file = e.target.files[0];
@@ -31,7 +33,7 @@ const Register = () => {
 
     // Perform form validation
     if (!displayName || !email || !password) {
-      console.log("Please fill in all fields");
+      setError('Please fill in all fields');
       return;
     }
 
@@ -129,6 +131,7 @@ const Register = () => {
             <span>Add your Display Picture</span>
           </label>
           <button type="submit">Register</button>
+          {error && <span className="error">{error}</span>}
         </form>
         <p>
           Already have an account? <Link to="/login">Sign in</Link>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./ActiveChat.styles.scss";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import {
   useFirestoreCollectionData,
   useFirestore,
@@ -21,16 +21,22 @@ import { ChatContext } from "../../ChatContext";
 const ActiveChat = () => {
   const { data: state } = useContext(ChatContext);
   const messagesRef = collection(db, "messages");
-  const queryRef = query(messagesRef, orderBy("timestamp", "desc"), limit(10));
+  const queryRef = query(messagesRef, orderBy("timestamp", "asc"), limit(10));
   const [messages, setMessages] = useState([]);
   const { status, data: messagesData } = useFirestoreCollectionData(queryRef, {
     idField: "id",
   });
 
+  const messagesContainerRef = useRef(null);
+
   useEffect(() => {
     if (status === "success") {
-      setMessages(messagesData.reverse());
-      console.log("ChatContext state:", state);
+      setMessages(messagesData);
+    
+
+      if (messagesContainerRef.current) {
+        messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+      }
     }
   }, [status, messagesData, state]);
 
@@ -47,10 +53,12 @@ const ActiveChat = () => {
     });
     return `${formattedDate} ${formattedTime}`;
   };
+
   const { data: currentUser } = useUser();
+
   return (
     <div className="activeChatContainer">
-      <div className="chatInfo">
+      <div className="chatInfo" ref={messagesContainerRef}>
         {messages.map((message) => (
           <div
             key={message.id}
